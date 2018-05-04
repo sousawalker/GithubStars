@@ -1,0 +1,7 @@
+<svg width="16" height="16" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Canvas" fill="none">
+<path id="Vector" d="M 13.3333 6.82759C 13.3333 10.5984 10.3486 13.6552 6.66667 13.6552C 2.98477 13.6552 0 10.5984 0 6.82759C 0 3.05681 2.98477 0 6.66667 0C 10.3486 0 13.3333 3.05681 13.3333 6.82759Z" transform="translate(1 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1B1E5"/>
+<path id="Vector_2" d="M 0 0L 13.3333 0" transform="translate(1 7.82758)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1B1E5"/>
+<path id="Vector_3" d="M 2.66667 0C 4.33419 1.86963 5.28184 4.29594 5.33333 6.82759C 5.28184 9.35923 4.33419 11.7855 2.66667 13.6552C 0.999146 11.7855 0.0514982 9.35923 0 6.82759C 0.0514982 4.29594 0.999146 1.86963 2.66667 0L 2.66667 0Z" transform="translate(5 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1B1E5"/>
+</g>
+</svg>
