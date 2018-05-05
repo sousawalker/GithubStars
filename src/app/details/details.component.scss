@@ -30,16 +30,14 @@
 
         .thumbs {
           display: block;
-          width: 100%;
-          max-width: 150px;
+          width: 150px;
           height: 150px;
           overflow: hidden;
           -webkit-border-radius: 50%;
           -moz-border-radius: 50%;
           border-radius: 50%;
-          text-align: center;
           margin: 0 auto 50px auto;
-          background-position: center;;
+          background-position: center;
           background-size: cover;
         }
 
