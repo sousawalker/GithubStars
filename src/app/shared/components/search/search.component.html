@@ -1,0 +1,17 @@
+<div id="search">
+	<div class="content">
+		<div class="left">
+			<img class="logo" src="assets/logo.svg">
+		</div>
+
+		<div class="right">
+			<form (submit)="submitUsername($event);">
+				<input #usernameInput type="text" value="{{ username }}" placeholder="github username...">
+
+				<button type="submit"><img src="assets/icon-search.svg"></button>
+			</form>
+
+			<div class="thubs" [style.background-image]="photo" *ngIf="photo"></div>
+		</div>
+	</div>
+</div>
