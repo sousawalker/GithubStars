@@ -1,11 +1,21 @@
 <div id="main">
-	<div class="search">
-		<img class="logo" src="assets/logo.svg">
+  <div class="search">
+    <img class="logo" src="assets/logo.svg">
 
-		<form action="">
-			<input type="text" placeholder="github username...">
+    <form (submit)="submitUsername($event);">
+      <input #usernameInput type="text" placeholder="github username...">
 
-			<button type="submit"><img src="assets/icon-search.svg"></button>
-		</form>
-	</div>
+      <button type="submit"><img src="assets/icon-search.svg"></button>
+    </form>
+  </div>
+
+  <div #tokenModal class="token" *ngIf="!token">
+    <form (submit)="submitToken($event);">
+      <input #tokenInput type="text" placeholder="personal token code...">
+
+      <button type="submit">OK</button>
+    </form>
+
+    <small>Don´t have token code? Folow this <a href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/" target="_blank">steps</a>.</small>
+  </div>
 </div>
