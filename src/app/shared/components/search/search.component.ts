@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
     this.service.createService().subscribe(data => {
       let response = data;
 
-      this.photo = this.sanitizer.bypassSecurityTrustStyle(`url(${response.data.viewer.avatarUrl})`);;
+      this.photo = this.sanitizer.bypassSecurityTrustStyle(`url(${response.data.viewer.avatarUrl})`);
     });
   }
 
