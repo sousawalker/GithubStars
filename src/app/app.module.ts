@@ -1,14 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+
 import { MainComponent } from './main/main.component';
 import { DetailsComponent } from './details/details.component';
-import { SearchComponent } from './shared/components/search/search.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
 
+import {
+  SearchComponent,
+  FooterComponent,
+  OwnInfoService,
+  UserInfoService,
+  StarsListService,
+  StarsPaginationService,
+  StarsActionsService
+} from './shared';
 
 @NgModule({
   declarations: [
@@ -20,9 +29,16 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    OwnInfoService,
+    UserInfoService,
+    StarsListService,
+    StarsPaginationService,
+    StarsActionsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
