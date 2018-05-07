@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -11,6 +11,8 @@ import { OwnInfoService } from '../../services';
 })
 export class SearchComponent implements OnInit {
   @ViewChild('usernameInput') usernameInput;
+
+  @Output() nameOut = new EventEmitter;
 
   username;
   photo;
@@ -31,6 +33,8 @@ export class SearchComponent implements OnInit {
     event.preventDefault();
 
     localStorage.setItem('username', this.usernameInput.nativeElement.value);
+
+    this.nameOut.emit(localStorage.getItem('username'));
 
     this.router.navigate(['/username/'+localStorage.getItem('username')]);
   }
