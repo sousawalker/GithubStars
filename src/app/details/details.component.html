@@ -1,167 +1,73 @@
 <div id="details">
   <div class="container">
-    <app-search></app-search>
+    <app-search (nameOut)="updateUser($event);"></app-search>
     
-    <div class="content">
+    <div class="content" *ngIf="error != 'NOT_FOUND'">
       <div class="left">
         <div class="avatar">
-          <div class="thumbs" style="background-image: url('https://www.boldsky.com/img/2014/03/x13-indian-man.jpg.pagespeed.ic.dpW8GrmC6W.jpg');"></div>
+          <div class="thumbs" [style.background-image]="photo" *ngIf="photo"></div>
 
-          <h1>Sindre Sorhus</h1>
+          <h1>{{ user.name }}</h1>
 
-          <h2>sindresorhus</h2>
+          <h2>{{ user.login }}</h2>
         </div>
 
         <div class="description">
-          <span>
-            Maker · Full-Time
-            <br>
-            Open-Sourcerer · Into Swift and Node.js
-          </span>
+          <span>{{ user.bio }}</span>
         </div>
 
         <ul class="infos">
           <li>
             <img class="icon" src="assets/icon-people.svg">
             
-            <span>@avajs @chalk @yeoman</span>
+            <span>{{ user.company }}</span>
           </li>
           <li>
             <img class="icon" src="assets/icon-location.svg">
             
-            <span>São Paulo, SP</span>
+            <span>{{ user.location }}</span>
           </li>
           <li>
             <img class="icon" src="assets/icon-email.svg">
             
-            <span>sindresorhus@gmail.com</span>
+            <span>{{ user.email }}</span>
           </li>
           <li>
             <img class="icon" src="assets/icon-world.svg">
             
-            <span>sindresorhus.com</span>
+            <span>{{ user.websiteUrl }}</span>
           </li>
         </ul>
       </div>
       
       <div class="right">
-        <section>
+        <section *ngFor="let list of lists">
           <div class="area">
-            <h1>sindresorhus / magic-iterable</h1>
-            <h2>Call a method on all items in an iterable by calling it on the iterable itself</h2>
+            <a href="{{ list.node.url }}" target="_blank" class="title">{{ list.node.name }}</a>
+            <h2>{{ list.node.description }}</h2>
 
             <span>
-              <img src="assets/icon-star.svg"> <small>200</small>
+              <img src="assets/icon-star.svg"> <small>{{ list.node.stargazers.totalCount }}</small>
             </span>
           </div>
 
-          <button>star</button>
+          <button [class.hidden]="list.node.viewerHasStarred == true" (click)="$event.preventDefault(); onStar($event, list.node.id);">star</button>
+
+          <button class="active" [class.hidden]="list.node.viewerHasStarred == false" (click)="$event.preventDefault(); onUnstar($event, list.node.id);">unstar</button>
         </section>
 
-        <section>
-          <div class="area">
-            <h1>sindresorhus / magic-iterable</h1>
-            <h2>Call a method on all items in an iterable by calling it on the iterable itself</h2>
+        <h4 class="text-center" *ngIf="noMore">no more results</h4>
 
-            <span>
-              <img src="assets/icon-star.svg"> <small>200</small>
-            </span>
-          </div>
-
-          <button class="active">unstar</button>
-        </section>
-
-        <section>
-          <div class="area">
-            <h1>sindresorhus / magic-iterable</h1>
-            <h2>Call a method on all items in an iterable by calling it on the iterable itself</h2>
-
-            <span>
-              <img src="assets/icon-star.svg"> <small>200</small>
-            </span>
-          </div>
-
-          <button class="active">unstar</button>
-        </section>
-
-        <section>
-          <div class="area">
-            <h1>sindresorhus / magic-iterable</h1>
-            <h2>Call a method on all items in an iterable by calling it on the iterable itself</h2>
-
-            <span>
-              <img src="assets/icon-star.svg"> <small>200</small>
-            </span>
-          </div>
-
-          <button class="active">unstar</button>
-        </section>
-
-        <section>
-          <div class="area">
-            <h1>sindresorhus / magic-iterable</h1>
-            <h2>Call a method on all items in an iterable by calling it on the iterable itself</h2>
-
-            <span>
-              <img src="assets/icon-star.svg"> <small>200</small>
-            </span>
-          </div>
-
-          <button class="active">unstar</button>
-        </section>
-
-        <section>
-          <div class="area">
-            <h1>sindresorhus / magic-iterable</h1>
-            <h2>Call a method on all items in an iterable by calling it on the iterable itself</h2>
-
-            <span>
-              <img src="assets/icon-star.svg"> <small>200</small>
-            </span>
-          </div>
-
-          <button class="active">unstar</button>
-        </section>
-
-        <section>
-          <div class="area">
-            <h1>sindresorhus / magic-iterable</h1>
-            <h2>Call a method on all items in an iterable by calling it on the iterable itself</h2>
-
-            <span>
-              <img src="assets/icon-star.svg"> <small>200</small>
-            </span>
-          </div>
-
-          <button class="active">unstar</button>
-        </section>
-
-        <section>
-          <div class="area">
-            <h1>sindresorhus / magic-iterable</h1>
-            <h2>Call a method on all items in an iterable by calling it on the iterable itself</h2>
-
-            <span>
-              <img src="assets/icon-star.svg"> <small>200</small>
-            </span>
-          </div>
-
-          <button class="active">unstar</button>
-        </section>
-
-        <section>
-          <div class="area">
-            <h1>sindresorhus / magic-iterable</h1>
-            <h2>Call a method on all items in an iterable by calling it on the iterable itself</h2>
-
-            <span>
-              <img src="assets/icon-star.svg"> <small>200</small>
-            </span>
-          </div>
-
-          <button class="active">unstar</button>
-        </section>
+        <div class="loader" *ngIf="loader">
+          <img src="assets/loader.gif">
+        </div>
       </div>
+    </div>
+
+    <div class="not-found" *ngIf="error == 'NOT_FOUND'">
+      <img src="assets/icon-notfound.svg">
+
+      <h3>User not found</h3>
     </div>
   </div>
 

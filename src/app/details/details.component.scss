@@ -92,6 +92,9 @@
           font-weight: 400;
           color: #FFF;
           margin-bottom: 15px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
 
           &:last-child {
             margin: 0;
@@ -140,8 +143,7 @@
           width: 100%;
           max-width: 85%;
 
-          h1 {
-            display: block;
+          .title {
             font-family: 'Roboto', sans-serif;
             font-size: 20px;
             font-weight: 400;
@@ -156,6 +158,24 @@
             font-weight: 300;
             color: #4F4F4F;
             margin: 0 0 15px 0;
+          }
+
+          span {
+            display: inline-block;
+
+            img {
+              display: inline-block;
+              vertical-align: middle;
+            }
+
+            small {
+              display: inline-block;
+              vertical-align: middle;
+              font-family: 'Roboto', sans-serif;
+              font-size: 14px;
+              color: #4F4F4F;
+              font-weight: 300;
+            }
           }
         }
 
@@ -184,6 +204,20 @@
           }
         }
       }
+
+      .loader {
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+
+  .not-found {
+    text-align: center;
+    padding: calc(50vh - 166px) 0;
+
+    h3 {
+      margin-bottom: 0;
     }
   }
 
