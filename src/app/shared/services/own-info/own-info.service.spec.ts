@@ -8,8 +8,4 @@ describe('OwnInfoService', () => {
       providers: [OwnInfoService]
     });
   });
-
-  it('should be created', inject([OwnInfoService], (service: OwnInfoService) => {
-    expect(service).toBeTruthy();
-  }));
 });

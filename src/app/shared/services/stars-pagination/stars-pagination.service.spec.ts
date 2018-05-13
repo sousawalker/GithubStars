@@ -8,8 +8,4 @@ describe('StarsPaginationService', () => {
       providers: [StarsPaginationService]
     });
   });
-
-  it('should be created', inject([StarsPaginationService], (service: StarsPaginationService) => {
-    expect(service).toBeTruthy();
-  }));
 });
